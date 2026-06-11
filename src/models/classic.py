@@ -16,8 +16,9 @@ def build_logistic_regression(
     penalty="l2",
     C=1.0,
     solver="lbfgs",
+    class_weight=None,
     max_iter=1000,
-    l1_ratio=0.0
+    l1_ratio=None
 ):
     return LogisticRegression(
         penalty=penalty,
@@ -25,7 +26,8 @@ def build_logistic_regression(
         random_state=SEED,
         solver=solver,
         max_iter=max_iter,
-        l1_ratio=l1_ratio
+        l1_ratio=l1_ratio,
+        class_weight=class_weight
     )
 
 
@@ -36,6 +38,7 @@ def build_random_forest(
     min_samples_split=2,
     min_samples_leaf=1,
     max_features="sqrt",
+    class_weight=None
 ):
     return RandomForestClassifier(
         n_estimators=n_estimators,
@@ -43,6 +46,7 @@ def build_random_forest(
         max_depth=max_depth,
         min_samples_split=min_samples_split,
         min_samples_leaf=min_samples_leaf,
+        class_weight=class_weight,
         max_features=max_features,
         n_jobs=-1,
         random_state=SEED
